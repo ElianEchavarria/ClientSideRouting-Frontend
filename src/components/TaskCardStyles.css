@@ -35,3 +35,13 @@
   display: flex;
   gap: 0.3rem;
 }
+
+
+.task-link {
+  color: white;
+  text-decoration: none;
+}
+
+.task-link:hover {
+  text-decoration: underline;
+}

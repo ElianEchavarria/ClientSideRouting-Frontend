@@ -8,6 +8,7 @@ import NavBar from "./components/NavBar";
 import CompletedTasks from "./components/CompletedTasks";
 import InCompletedTasks from "./components/InCompletedTasks";
 import HomePage from "./components/Users";
+import TaskDetail from "./components/TaskDetail";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 
@@ -42,6 +43,8 @@ const App = () => {
           element={<AddTask fetchAllTasks={fetchAllTasks} />}
         />
         <Route path="/home" element={<HomePage />} />
+        <Route path="/tasks/:id" element={<TaskDetail />} />
+
       </Routes>
     </div>
   );
