@@ -5,10 +5,11 @@ import "./AppStyles.css";
 import TaskList from "./components/TaskList";
 import AddTask from "./components/AddTask";
 import NavBar from "./components/NavBar";
-import CompletedTasks from "./components/CompletedTasks"; 
-import InCompletedTasks from "./components/InCompletedTasks"; 
-import HomePage from "./components/HomePage"; 
-import { Route, BrowserRouter as Router, Routes } from "react-router";
+import CompletedTasks from "./components/CompletedTasks";
+import InCompletedTasks from "./components/InCompletedTasks";
+import HomePage from "./components/Users";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 
 const App = () => {
   const [tasks, setTasks] = useState([]);
@@ -29,26 +30,27 @@ const App = () => {
   return (
     <div>
       <NavBar />
-      <TaskList tasks={tasks} fetchAllTasks={fetchAllTasks} />
-      <AddTask fetchAllTasks={fetchAllTasks} />
       <Routes>
+        <Route
+          path="/"
+          element={<TaskList tasks={tasks} fetchAllTasks={fetchAllTasks} />}
+        />
         <Route path="/completed" element={<CompletedTasks />} />
         <Route path="/incomplete" element={<InCompletedTasks />} />
-        <Route path="/add-task" element={<AddTask />} />
+        <Route
+          path="/add-task"
+          element={<AddTask fetchAllTasks={fetchAllTasks} />}
+        />
         <Route path="/home" element={<HomePage />} />
-
       </Routes>
     </div>
   );
 };
 
-// We're using React Router to handle the navigation between pages.
-// It's important that the Router is at the top level of our app,
-// and that we wrap our entire app in it. With this in place, we can
-// declare routes, Links, and use useful hooks like useNavigate.
 const root = createRoot(document.getElementById("root"));
 root.render(
   <Router>
     <App />
   </Router>
 );
+

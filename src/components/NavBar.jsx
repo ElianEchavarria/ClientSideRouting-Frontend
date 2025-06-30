@@ -5,15 +5,14 @@ import { Link } from "react-router-dom";
 const NavBar = () => {
   return (
     <nav className="navbar">
-      <Route path="/completed" element={<CompletedTasks />} />
-
+      <Link to="/">All Tasks</Link>
       <Link to="/completed">Completed Task</Link>
-
+      <Link to="/incomplete">Incomplete Task</Link>
       <Link to="/add-task">Add Task</Link>
-
-      <Link to="/home">Home Page</Link>
+      <Link to="/home">Users</Link>
     </nav>
   );
 };
 
 export default NavBar;
+
