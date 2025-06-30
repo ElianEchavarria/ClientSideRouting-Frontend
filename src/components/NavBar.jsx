@@ -12,6 +12,7 @@ const NavBar = () => {
       <a href="/completed">Completed Tasks</a>
       <a href="/incomplete">Incomplete Tasks</a>
       <a href="/add-task">Add Task</a>
+      <a href="/users">Users</a>
     </nav>
   );
 };

@@ -1,14 +1,21 @@
 import React from "react";
 import axios from "axios";
 import "./TaskCardStyles.css";
+import { Link } from "react-router";
+
 
 const TaskCard = ({ task, fetchAllTasks }) => {
+
+
+
   const handleCompleteTask = async () => {
     try {
       await axios.patch(`http://localhost:8080/api/tasks/${task.id}`, {
         completed: !task.completed,
       });
       fetchAllTasks();
+
+      console.log(task.id);
     } catch (error) {
       console.error("Error completing task:", error);
     }
@@ -26,7 +33,7 @@ const TaskCard = ({ task, fetchAllTasks }) => {
   return (
     <div className={`task-card ${task.completed ? "completed" : "incomplete"}`}>
       <div className="task-card-header">
-        <h2>{task.title}</h2>
+        <Link to={`/tasks/${task.id}`}>{task.title}</Link>
         <div className="task-card-header-buttons">
           {task.completed ? (
             <p onClick={handleCompleteTask}>🔄</p>
